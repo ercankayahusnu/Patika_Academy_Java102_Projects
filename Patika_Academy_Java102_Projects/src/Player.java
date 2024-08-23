@@ -8,22 +8,25 @@ public class Player {
     private String name;
     private String charName;
     private Scanner input = new Scanner(System.in);
+    private Inventory inventory;
 
 
     public Player(String name) {
+
         this.name = name;
+        this.inventory = new Inventory();
     }
 
     public void selectChar() {
         GameChar[] charList = {new Samurai(), new Archer(), new Knight()};
-        System.out.println("------------------CHARACTERS---------------------------");
+        System.out.println("*********************** CHARACTERS ***********************\n");
         for (GameChar gameChar : charList) {
             System.out.println(gameChar.getId() + "--" + gameChar.getName() +
                     "\n Damage -> " + gameChar.getDamage() +
                     "\n Health -> " + gameChar.getHealth() +
                     "\n Money -> " + gameChar.getMoney());
         }
-        System.out.println("--------------------------------------------------------");
+        System.out.println("--------------------------------------------------------\n");
         System.out.println("Please choose a character");
         int selectChar = input.nextInt();
         switch (selectChar) {
@@ -39,10 +42,15 @@ public class Player {
             default:
                 initPlayer(new Samurai());
         }
+
+        /*
         System.out.println("Selected Character : " + this.getCharName()
                 + " -> Damage : " + this.getDamage()
                 + "  Health : " + this.getHealth()
                 + "  Money : " + this.getMoney());
+        System.out.println("\n");
+
+         */
     }
 
     public void initPlayer(GameChar gameChar) {
@@ -52,8 +60,16 @@ public class Player {
         this.setCharName(gameChar.getName());
     }
 
+    public void printInfo() {
+        System.out.println(
+                "Weapon  -> " + this.getInventory().getWeapon().getName() + "\n" +
+                "Damage -> " + this.getDamage() + "\n" +
+                "Health -> " + this.getHealth() + "\n" +
+                "Money  -> " + this.getMoney());
+    }
+
     public int getDamage() {
-        return damage;
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public void setDamage(int damage) {
@@ -90,5 +106,13 @@ public class Player {
 
     public void setCharName(String charName) {
         this.charName = charName;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }
