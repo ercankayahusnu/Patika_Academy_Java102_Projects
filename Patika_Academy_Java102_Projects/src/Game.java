@@ -18,12 +18,19 @@ public class Game {
         while (true) {
             player.printInfo();
             System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("Cave:The caves of our village have been taken over by zombies. Help us reach our supplies in our caves.");
+            System.out.println("Forest:The forests of our village have been taken over by vampires. wood in our forests.Help us reach him.");
+            System.out.println("River:The rivers of our village have been taken over by bears. We lost our water source, help us.");
             System.out.println("Safe House: It is an area free from enemies. Here the village people will heal your wounds and your health will increase.");
             System.out.println("Shop: You can increase your character's health and damage by purchasing new armor and equipment.");
             System.out.println("------------------------------------------------------------------------------------------------------------------------------------\n");
             System.out.println("0-Quit Game");
-            System.out.println("1--> Safe House ");
-            System.out.println("2--> Shop \n");
+            System.out.println("1--> Cave ");
+            System.out.println("2--> Forest ");
+            System.out.println("3--> River ");
+            System.out.println("4--> Safe House ");
+            System.out.println("5--> Shop ");
+
             System.out.println("Please select the region you want to go to:");
             System.out.println("------------------------------------------------------------------------------------------------------------------------------------\n");
             int selectLocation = input.nextInt();
@@ -32,13 +39,22 @@ public class Game {
                     location = null;
                     break;
                 case 1:
-                    location = new SafeHouse(player);
+                    location = new Cave(player);
                     break;
                 case 2:
+                    location = new Forest(player);
+                    break;
+                case 3:
+                    location = new River(player);
+                    break;
+                case 4:
+                    location = new SafeHouse(player);
+                    break;
+                case 5:
                     location = new ToolStore(player);
                     break;
                 default:
-                    location = new SafeHouse(player);
+                    System.out.println("Please enter a valid region.");
 
             }
             if (location == null) {
