@@ -62,7 +62,7 @@ public class Game {
                 break;
             }
             if (!location.onLocation()) {
-                System.out.println("Game Over");
+                System.out.println("GAME OVER");
                 break;
             }
         }

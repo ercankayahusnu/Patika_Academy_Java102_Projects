@@ -63,15 +63,19 @@ public class Player {
     public void printInfo() {
         System.out.println(
                 "Weapon  -> " + this.getInventory().getWeapon().getName() + "\n" +
-                "Armor  -> " + this.getInventory().getArmor().getName() + "\n" +
-                "Block  -> " + this.getInventory().getArmor().getBlock() + "\n" +
-                "Damage -> " + this.getDamage() + "\n" +
-                "Health -> " + this.getHealth() + "\n" +
-                "Money  -> " + this.getMoney());
+                        "Armor  -> " + this.getInventory().getArmor().getName() + "\n" +
+                        "Block  -> " + this.getInventory().getArmor().getBlock() + "\n" +
+                        "Damage -> " + this.getDamage() + "\n" +
+                        "Health -> " + this.getHealth() + "\n" +
+                        "Money  -> " + this.getMoney());
+    }
+
+    public int getTotalDamage() {
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public int getDamage() {
-        return damage + this.getInventory().getWeapon().getDamage();
+        return damage;
     }
 
     public void setDamage(int damage) {
@@ -116,5 +120,9 @@ public class Player {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    public Weapon getWeapon() {
+        return this.getInventory().getWeapon();
     }
 }

@@ -3,13 +3,16 @@ public class Obstacle {
     private String name;
     private int damage;
     private int health;
+    private int awardMoney;
+    private int orjHealth;
 
 
-    public Obstacle(int id, String name, int damage, int health) {
+    public Obstacle(int id, String name, int damage, int health, int awardMoney) {
         this.id = id;
         this.name = name;
         this.damage = damage;
-        this.health = health;
+        this.orjHealth = health;
+        this.awardMoney = awardMoney;
     }
 
     public int getId() {
@@ -41,6 +44,25 @@ public class Obstacle {
     }
 
     public void setHealth(int health) {
+        if (health < 0) {
+            this.health = 0;
+        }
         this.health = health;
+    }
+
+    public int getAwardMoney() {
+        return awardMoney;
+    }
+
+    public int getOrjHealth() {
+        return orjHealth;
+    }
+
+    public void setOrjHealth(int orjHealth) {
+        this.orjHealth = orjHealth;
+    }
+
+    public void setAwardMoney(int awardMoney) {
+        this.awardMoney = awardMoney;
     }
 }
